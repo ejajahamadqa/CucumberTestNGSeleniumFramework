@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!-- set thread-count =2 if parallel execution is required otherwise set it to 1
+& comment the classname which is not required to be run in parallel !-->
+<suite name="Cucumber" data-provider-thread-count="1">
+    <test name="PFM">
+        <classes>
+            <class name="runner.WebTestRunner"/>
+        </classes>
+    </test>
+    <test name="PFM Failure Runner" parallel="false">
+        <classes>
+            <class name="runner.WebTestRunnerRerun"/>
+        </classes>
+    </test>
+    <!--<listeners>
+        <listener class-name="reportgenerator.CucumberReportGenerator"/>
+    </listeners>-->
+</suite>
