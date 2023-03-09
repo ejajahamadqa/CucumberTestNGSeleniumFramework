@@ -18,7 +18,6 @@ public class Environment {
         setDriver(new ChromeDriver());
         getDriver().manage().window().maximize();
         getDriver().get(prop.getProperty("environment." + Environment.prop.getProperty("environment") + "-base-url"));
-
     }
 
     private static void setDriver(WebDriver driver) {
