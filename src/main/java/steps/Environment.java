@@ -37,7 +37,7 @@ public class Environment {
     private static void loadEnvironmentProperties() {
         setEnvironment();
         prop.putAll(getProperties("config/common.properties"));
-        prop.putAll(getProperties("config/" + prop.getProperty("environment") + "properties"));
+        prop.putAll(getProperties("config/" + prop.getProperty("environment") + ".properties"));
         overrideSystemProperties();
     }
 
