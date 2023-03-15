@@ -20,7 +20,7 @@ public class Hook extends Environment {
     @AfterStep
     public void tearDownStep(Scenario scenario) throws IOException {
         if (scenario.isFailed()) {
-            scenario.attach(getScreenshotByte(), "image/png", scenario.getName() + "png");
+            scenario.attach(getScreenshotByte(), "image/png", scenario.getName() + ".png");
         }
     }
 
@@ -35,9 +35,9 @@ public class Hook extends Environment {
     }
 
     @After
-    public void afterTest(Scenario scenario) throws IOException {
+    public void afterTest(Scenario scenario) {
         CucumberReportGenerator.updateTestResultCount(scenario);
-        tearDownStep(scenario);
+        //tearDownStep(scenario);
         basePage.quitBrowser();
     }
 

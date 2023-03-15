@@ -8,3 +8,5 @@ build/
 target/
 .DS_Store
 .gradle/
+report/
+test-output/
