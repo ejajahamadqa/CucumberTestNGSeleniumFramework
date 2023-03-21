@@ -4,7 +4,7 @@
 *.log
 .idea/*
 out/
-build
+.build/*
 target/
 *.DS_Store
 .gradle
@@ -12,5 +12,7 @@ report/
 test-output/
 .gitignore
 .classpath
+settings.gradle
+gradlew.bat
 .project
 .settings
