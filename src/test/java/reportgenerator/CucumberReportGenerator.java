@@ -2,11 +2,6 @@ package reportgenerator;
 
 import com.github.mkolisnyk.cucumber.reporting.CucumberResultsOverview;
 import io.cucumber.java.Scenario;
-import org.testng.IReporter;
-import org.testng.ISuite;
-import org.testng.xml.XmlSuite;
-import steps.Environment;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -15,6 +10,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
+import org.testng.IReporter;
+import org.testng.ISuite;
+import org.testng.xml.XmlSuite;
+import steps.Environment;
 
 public class CucumberReportGenerator implements IReporter {
 
@@ -46,7 +45,7 @@ public class CucumberReportGenerator implements IReporter {
 
     @Override
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
-       /* if (UPLOAD_TO_ETCH != null && UPLOAD_TO_ETCH.equals("true")) {
+        /* if (UPLOAD_TO_ETCH != null && UPLOAD_TO_ETCH.equals("true")) {
             BuildTAG = PFM_UI_AUTOMATION;
             Path reportPath = Paths.get(CBKBUILD_MASTERTHOUGHT + "Report-" + testTimestamp + " html");
             try {
@@ -61,26 +60,26 @@ public class CucumberReportGenerator implements IReporter {
         }*/
 
         //if (REPORT_EMAIL != null && REPORT_EMAIL.equals("true")) {
-            CucumberResultsOverview results = new CucumberResultsOverview();
-            //results.setTemplatesLocation("src/test/resources/templates.json");
-            results.setOutputDirectory("./cbkbuild/report");
-            results.setOutputName("cucumber-results");
-            results.setSourceFile(" /cbkbuild/cucumber-report.json");
-            try {
-                results.execute();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            StringBuilder contentBuilder = new StringBuilder();
-            try (Stream<String> stream = Files.lines(Paths.get(". /cbkbuild/report/cucumber-results-feature-overview.html"), StandardCharsets.UTF_8)) {
-                stream.forEach(s -> contentBuilder.append(s));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            String reportOverview = contentBuilder.toString().replaceAll("ETCHURL", etchURL);
-            if (reportOverview != null) {
-                // EmailTestReportUtil.sendEmail(EmailTo, subject: "PFM Redoc UI Automation Report", reportOverview);
-            }
+        CucumberResultsOverview results = new CucumberResultsOverview();
+        //results.setTemplatesLocation("src/test/resources/templates.json");
+        results.setOutputDirectory("./cbkbuild/report");
+        results.setOutputName("cucumber-results");
+        results.setSourceFile(" /cbkbuild/cucumber-report.json");
+        try {
+            results.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        StringBuilder contentBuilder = new StringBuilder();
+        try (Stream<String> stream = Files.lines(Paths.get(". /cbkbuild/report/cucumber-results-feature-overview.html"), StandardCharsets.UTF_8)) {
+            stream.forEach(s -> contentBuilder.append(s));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String reportOverview = contentBuilder.toString().replaceAll("ETCHURL", etchURL);
+        if (reportOverview != null) {
+            // EmailTestReportUtil.sendEmail(EmailTo, subject: "PFM Redoc UI Automation Report", reportOverview);
+        }
         //}
 
     }
@@ -123,9 +122,9 @@ public class CucumberReportGenerator implements IReporter {
     public static void updateTestResultCount(Scenario scenario) {
         testCount++;
         if (scenario.isFailed()) {
-            failedCount ++;
+            failedCount++;
         } else {
-            passedCount ++;
+            passedCount++;
         }
     }
 }

@@ -17,7 +17,7 @@ public class DragAndDropStep {
 
     @When("Drag ‘Drag me to my target’ component to ‘Drop here’ component")
     public void drag_drag_me_to_my_target_component_to_drop_here_component() {
-       System.out.println("");
+        System.out.println("");
     }
 
     @Then("verify Drag me to my target option is successfull")

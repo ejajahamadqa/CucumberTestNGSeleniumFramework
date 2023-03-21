@@ -1,12 +1,11 @@
 package steps;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.Set;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Environment {
 
@@ -63,11 +62,11 @@ public class Environment {
         }
     }
 
-     /*
-     * helper method to read properties from a file.
-     * Params: filename - name of the file to be read.
-     * Returns: properties.
-     */
+    /*
+    * helper method to read properties from a file.
+    * Params: filename - name of the file to be read.
+    * Returns: properties.
+    */
     public static Properties getProperties(String filename) {
         ClassLoader loader = ClassLoader.getSystemClassLoader();
         Properties p = new Properties();
