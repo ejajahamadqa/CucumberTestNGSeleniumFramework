@@ -3,7 +3,6 @@ plugins {
     id 'checkstyle'
 }
 
-
 ext {
     iocucumber = '6.9.0'
     apachepoi = '4.1.2'
