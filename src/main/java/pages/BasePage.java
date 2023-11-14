@@ -2,8 +2,6 @@ package pages;
 
 import static java.lang.Boolean.valueOf;
 
-import constants.FrameWorkConstants;
-import driver.DriverFactory;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,8 +13,9 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import steps.Environment;
 
-public class BasePage extends DriverFactory {
+public class BasePage extends Environment {
 
     private static HashMap<String, List<String>> globalVars = new HashMap<>();
 
@@ -82,17 +81,17 @@ public class BasePage extends DriverFactory {
     }
 
     public void switchToFrame(int value) {
-        DriverFactory.getDriver().switchTo().frame(value);
+        Environment.getDriver().switchTo().frame(value);
     }
 
     public void switchToDefaultContent() {
-        DriverFactory.getDriver().switchTo().defaultContent();
+        Environment.getDriver().switchTo().defaultContent();
     }
 
     public boolean refreshBrowser() {
         boolean status = false;
         try {
-            DriverFactory.getDriver().navigate().refresh();
+            Environment.getDriver().navigate().refresh();
             status = true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -102,23 +101,27 @@ public class BasePage extends DriverFactory {
 
     public List<WebElement> waitForElements(By by) {
         waitForjQueryDone();
-        return new WebDriverWait(getDriver(), FrameWorkConstants.EXPLICIT_WAIT).until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
+        //return new WebDriverWait(getDriver(), FrameWorkConstants.EXPLICIT_WAIT).until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
+        return new WebDriverWait(getDriver(), 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
     }
 
     private WebElement waitForElement(By by) {
         waitForjQueryDone();
-        return new WebDriverWait(getDriver(), FrameWorkConstants.EXPLICIT_WAIT).until(ExpectedConditions.presenceOfElementLocated(by));
+        //return new WebDriverWait(getDriver(), FrameWorkConstants.EXPLICIT_WAIT).until(ExpectedConditions.presenceOfElementLocated(by));
+        return new WebDriverWait(getDriver(), 10).until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
-    private WebElement waitForElementClickable(WebElement webElement) {
+    public WebElement waitForElementClickable(WebElement webElement) {
         waitForjQueryDone();
-        return new WebDriverWait(getDriver(), FrameWorkConstants.EXPLICIT_WAIT).until(ExpectedConditions.elementToBeClickable(webElement));
+        //return new WebDriverWait(getDriver(), FrameWorkConstants.EXPLICIT_WAIT).until(ExpectedConditions.elementToBeClickable(webElement));
+        return new WebDriverWait(getDriver(), 10).until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
 
     private WebElement waitForElementClickable(By by) {
         waitForjQueryDone();
-        return new WebDriverWait(getDriver(), FrameWorkConstants.EXPLICIT_WAIT).until(ExpectedConditions.elementToBeClickable(by));
+        //return new WebDriverWait(getDriver(), FrameWorkConstants.EXPLICIT_WAIT).until(ExpectedConditions.elementToBeClickable(by));
+        return new WebDriverWait(getDriver(), 10).until(ExpectedConditions.elementToBeClickable(by));
     }
 
     private boolean waitForjQueryDone() {

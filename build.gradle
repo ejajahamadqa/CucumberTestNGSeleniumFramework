@@ -31,6 +31,10 @@ dependencies {
     implementation group: 'org.apache.poi', name: 'poi', version: "${apachepoi}"
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: "${apachepoi}"
     implementation group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: "${apachepoi}"
+
+    // https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox
+    implementation group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.27'
+
 }
 
 task {

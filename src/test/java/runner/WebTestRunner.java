@@ -9,8 +9,9 @@ import org.testng.annotations.DataProvider;
         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
     },
     glue = {"steps"},
-    features = "src/test/resources/features",
-    tags = ""
+    features = "src/test/resources/features"
+    //tags = "@Zeetech",
+    //dryRun = true
 )
 public class WebTestRunner extends AbstractTestNGCucumberTests {
 
